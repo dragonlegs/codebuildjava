@@ -7,6 +7,5 @@ phases:
       - pip install docker
   build:
     commands:
-      - service docker start
       - docker pull httpd
       - docker images

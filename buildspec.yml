@@ -8,6 +8,6 @@ phases:
       - gradle build --no-daemon
   post_build:
     commands:
-      - echo Build ended on `date`
+      - echo Build  on `date`
       - echo 'Upload to Lamda Function'
       - aws lambda update-function-code --function-name sample-java-function --zip-file fileb://$CODEBUILD_SRC_DIR/build/distributions/src.zip

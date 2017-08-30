@@ -1,13 +1,12 @@
-version: 0.2
-
+version: 0.1
 phases:
+  install:
+    commands:
+      - echo install ...
+      - apt-get update -y
+      - pip install docker
   build:
     commands:
-      - echo Build started on `date`
-      - gradle --version
-      - gradle build --no-daemon
-  post_build:
-    commands:
-      - echo Build  on `date`
-      - echo 'Upload to Lamda Function'
-      - aws lambda update-function-code --function-name sample-java-function --zip-file fileb://$CODEBUILD_SRC_DIR/build/distributions/src.zip
+      - service docker start
+      - docker pull httpd
+      - docker images
